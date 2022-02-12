@@ -107,6 +107,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmokeEffectParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 6045315659814721142, guid: f5b64c7e548cc6945bfbb53f93850643,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6346253769362910516, guid: f5b64c7e548cc6945bfbb53f93850643,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -160,6 +165,11 @@ PrefabInstance:
     - target: {fileID: 6346253769362910516, guid: f5b64c7e548cc6945bfbb53f93850643,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7723126829124407966, guid: f5b64c7e548cc6945bfbb53f93850643,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

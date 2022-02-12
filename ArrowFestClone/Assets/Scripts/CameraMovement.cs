@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -25,13 +24,21 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x,
-            target.transform.position.y + yOffset, target.transform.position.z + zOffset),
-            followSpeed * Time.deltaTime);
+        if (target != null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x,
+                target.transform.position.y + yOffset, target.transform.position.z + zOffset),
+                followSpeed * Time.deltaTime);
+        }
     }
 
-    public void CameraShake()
+    public void FinishGame()
     {
-        GetComponent<Animator>().SetTrigger("isCameraShake");
+        Invoke("NextLevel", 5);
+        yOffset = 0;
+    }
+    void NextLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 }

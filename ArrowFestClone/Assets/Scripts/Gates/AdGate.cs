@@ -15,6 +15,11 @@ public class AdGate : MonoBehaviour
     public int situtaion;
 
     public Text gateText;
+
+    public GameObject neighbour;
+
+    public Color turqoise;
+    public Color red;
     private void Awake()
     {
         switch (situtaion)
@@ -22,23 +27,28 @@ public class AdGate : MonoBehaviour
             case 0:
                 Reaction = Ad;
                 gateText.text = "+" + arrowCount;
+                GetComponent<MeshRenderer>().material.color = turqoise;
                 break;
             case 1:
                 Reaction = Remove;
                 gateText.text = "-" + arrowCount;
+                GetComponent<MeshRenderer>().material.color = red;
                 break;
             case 2:
                 Reaction = Divide;
                 gateText.text = "/" + arrowCount;
+                GetComponent<MeshRenderer>().material.color = red;
                 break;
             case 3:
                 Reaction = Multiply;
                 gateText.text = "x" + arrowCount;
+                GetComponent<MeshRenderer>().material.color = turqoise;
                 break;
             default:
                 Debug.LogError("Situation has to be in (0,1,2,3)");
                 break;
         }
+        neighbour = gameObject.transform.parent.GetChild(1).gameObject;
     }
 
 
@@ -50,6 +60,7 @@ public class AdGate : MonoBehaviour
             {
                 isCollide = true;
                 gameObject.GetComponent<BoxCollider>().enabled = false;
+                neighbour.GetComponent<BoxCollider>().enabled = false;
                 Reaction();
             }
         }

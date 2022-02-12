@@ -8,14 +8,18 @@ public class ArrowSort : MonoBehaviour
     public float maxX;
     public LayerMask layerMask;
     public float distance;
-    public float moveSpeed;
+    private float moveSpeed;
+    public float speed;
 
     public List<GameObject> arrows;
     public GameObject arrowPrefab;
     public Transform arrowParent;
 
-    public static ArrowSort instance;
+    public GameObject tutorial;
 
+    bool isGameStart;
+
+    public static ArrowSort instance;
     private void Awake()
     {
         if (instance == null)
@@ -34,6 +38,12 @@ public class ArrowSort : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0))
         {
             GetRay();
+            if (!isGameStart)
+            {
+                isGameStart = true;
+                tutorial.SetActive(false);
+                moveSpeed = speed;
+            }
         }
     }
 
@@ -61,6 +71,12 @@ public class ArrowSort : MonoBehaviour
         for (int i = 0; i < arrowCount; i++)
         {
             MoveObjects(arrows[i].transform, i * angle);
+        }
+
+        foreach (GameObject arrow in arrows)
+        {
+            if (!arrow.GetComponentInChildren<ParticleSystem>().isPlaying)
+                arrow.GetComponentInChildren<ParticleSystem>().Play();
         }
     }
 
