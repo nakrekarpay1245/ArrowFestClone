@@ -14,6 +14,15 @@ public class ArrowSort : MonoBehaviour
     public GameObject arrowPrefab;
     public Transform arrowParent;
 
+    public static ArrowSort instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
     private void Start()
     {
         GetRay();
@@ -36,12 +45,11 @@ public class ArrowSort : MonoBehaviour
     void MoveObjects(Transform objectTransform, float degree)
     {
         Vector3 position = Vector3.zero;
+        float oneDivideDistance = 1 / distance;
+        oneDivideDistance = Mathf.Clamp(oneDivideDistance, -3, 3);
         position.x = Mathf.Cos(degree * Mathf.Deg2Rad);
         position.y = Mathf.Sin(degree * Mathf.Deg2Rad);
-        objectTransform.localPosition = position * (1 / distance);
-        objectTransform.localPosition =
-            new Vector3(Mathf.Clamp(objectTransform.localPosition.x, -3, 3),
-            Mathf.Clamp(objectTransform.localPosition.y, -3, 3), objectTransform.localPosition.z);
+        objectTransform.localPosition = position * oneDivideDistance;
     }
 
     void Sort()
@@ -81,6 +89,68 @@ public class ArrowSort : MonoBehaviour
 
             Sort();
             SwipeMovement();
+        }
+    }
+
+    public void AdArrow(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            GameObject currentArrow = Instantiate(arrowPrefab, arrowParent);
+            currentArrow.transform.rotation = arrows[i].transform.rotation;
+            arrows.Add(currentArrow);
+            Sort();
+        }
+    }
+    public void RemoveArrow(int count)
+    {
+        if (count < arrows.Count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                GameObject currentArrow = arrows[arrows.Count - 1];
+                currentArrow.SetActive(false);
+                arrows.Remove(currentArrow);
+                currentArrow.transform.parent = null;
+                Destroy(currentArrow, 1);
+                Sort();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Game Over");
+        }
+    }
+    public void DivideArrow(float count)
+    {
+        float divideCount = Mathf.Ceil(arrows.Count / count);
+        float arrowCount = arrows.Count - divideCount;
+        if (arrowCount < arrows.Count)
+        {
+            for (int i = 0; i < arrowCount; i++)
+            {
+                GameObject currentArrow = arrows[arrows.Count - 1];
+                currentArrow.SetActive(false);
+                arrows.Remove(currentArrow);
+                currentArrow.transform.parent = null;
+                Destroy(currentArrow, 1);
+                Sort();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Game Over");
+        }
+    }
+    public void MultiplyArrow(int count)
+    {
+        int multiplyCount = arrows.Count * (count - 1);
+        for (int i = 0; i < multiplyCount; i++)
+        {
+            GameObject currentArrow = Instantiate(arrowPrefab, arrowParent);
+            currentArrow.transform.rotation = arrows[i].transform.rotation;
+            arrows.Add(currentArrow);
+            Sort();
         }
     }
 }

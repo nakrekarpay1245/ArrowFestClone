@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class ArrowParentMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static ArrowParentMovement instance;
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 }

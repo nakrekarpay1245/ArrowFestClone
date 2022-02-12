@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class ArrowParentCollider : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static ArrowParentCollider instance;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+    public void AdArrow(int count)
+    {
+        ArrowSort.instance.AdArrow(count);
+    }
+    public void RemoveArrow(int count)
+    {
+        ArrowSort.instance.RemoveArrow(count);
+    }
+    public void DivideArrow(int count)
+    {
+        ArrowSort.instance.DivideArrow(count);
+    }
+    public void MultiplyArrow(int count)
+    {
+        ArrowSort.instance.MultiplyArrow(count);
     }
 }
