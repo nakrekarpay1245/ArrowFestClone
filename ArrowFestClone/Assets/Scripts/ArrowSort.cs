@@ -16,8 +16,11 @@ public class ArrowSort : MonoBehaviour
     public Transform arrowParent;
 
     public GameObject tutorial;
+    public GameObject targetObstacle;
 
     bool isGameStart;
+    bool isShoot;
+
 
     public static ArrowSort instance;
     private void Awake()
@@ -72,12 +75,6 @@ public class ArrowSort : MonoBehaviour
         {
             MoveObjects(arrows[i].transform, i * angle);
         }
-
-        foreach (GameObject arrow in arrows)
-        {
-            if (!arrow.GetComponentInChildren<ParticleSystem>().isPlaying)
-                arrow.GetComponentInChildren<ParticleSystem>().Play();
-        }
     }
 
     void SwipeMovement()
@@ -85,6 +82,8 @@ public class ArrowSort : MonoBehaviour
         arrowParent.transform.position = Vector3.Lerp(arrowParent.transform.position,
             new Vector3(distance, arrowParent.transform.position.y,
             arrowParent.transform.position.z), Time.deltaTime * 10);
+
+        arrowParent.transform.Rotate(Vector3.forward * Time.deltaTime * 500 * distance);
     }
 
     void GetRay()
@@ -103,11 +102,32 @@ public class ArrowSort : MonoBehaviour
 
             distance = mouse.x;
 
-            Sort();
+            if (!isShoot)
+            {
+                Sort();
+            }
             SwipeMovement();
         }
     }
 
+    public void Shoot(int count)
+    {
+        StartCoroutine(ShootCoroutine(count));
+    }
+
+    public IEnumerator ShootCoroutine(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            yield return new WaitForSeconds(.1f);
+            GameObject currentArrow = arrows[0];
+            arrows.Remove(currentArrow);
+            currentArrow.transform.parent = null;
+            currentArrow.GetComponent<ArrowMovement>().targetObstacle = this.targetObstacle;
+            Destroy(currentArrow, 2);
+            //Debug.Log("Nabre : " + currentArrow.name);
+        }
+    }
     public void AdArrow(int count)
     {
         for (int i = 0; i < count; i++)
