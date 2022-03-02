@@ -28,21 +28,25 @@ public class AdGate : MonoBehaviour
                 Reaction = Ad;
                 gateText.text = "+" + arrowCount;
                 GetComponent<MeshRenderer>().material.color = turqoise;
+                gateText.color = Color.cyan;
                 break;
             case 1:
                 Reaction = Remove;
                 gateText.text = "-" + arrowCount;
                 GetComponent<MeshRenderer>().material.color = red;
+                gateText.color = Color.red;
                 break;
             case 2:
                 Reaction = Divide;
                 gateText.text = "/" + arrowCount;
                 GetComponent<MeshRenderer>().material.color = red;
+                gateText.color = Color.red;
                 break;
             case 3:
                 Reaction = Multiply;
                 gateText.text = "x" + arrowCount;
                 GetComponent<MeshRenderer>().material.color = turqoise;
+                gateText.color = Color.cyan;
                 break;
             default:
                 Debug.LogError("Situation has to be in (0,1,2,3)");
@@ -60,6 +64,7 @@ public class AdGate : MonoBehaviour
             {
                 isCollide = true;
                 gameObject.GetComponent<BoxCollider>().enabled = false;
+                gameObject.SetActive(false);
                 neighbour.GetComponent<BoxCollider>().enabled = false;
                 Reaction();
             }

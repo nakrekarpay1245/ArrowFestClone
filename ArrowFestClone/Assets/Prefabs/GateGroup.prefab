@@ -191,6 +191,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1488383299430738288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598121969874685354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1598121969916215782
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +318,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &5651894754416756594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301581046659223254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1598121968345806039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -324,6 +354,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GateText
+      objectReference: {fileID: 0}
+    - target: {fileID: 8320899697315609091, guid: 4a708317e2bbf8d43a6b2987d2f43c8d,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 41571e355fb18d4479c6de1841418608,
+        type: 3}
+    - target: {fileID: 8320899697315609091, guid: 4a708317e2bbf8d43a6b2987d2f43c8d,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8320899697531324008, guid: 4a708317e2bbf8d43a6b2987d2f43c8d,
         type: 3}
@@ -418,13 +459,19 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1598121968345806039}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7301581046659223254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8320899697315609089, guid: 4a708317e2bbf8d43a6b2987d2f43c8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1598121968345806039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7301581046659223252 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8320899697315609091, guid: 4a708317e2bbf8d43a6b2987d2f43c8d,
     type: 3}
   m_PrefabInstance: {fileID: 1598121968345806039}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7301581046659223254}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
@@ -451,6 +498,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GateText
+      objectReference: {fileID: 0}
+    - target: {fileID: 8320899697315609091, guid: 4a708317e2bbf8d43a6b2987d2f43c8d,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 41571e355fb18d4479c6de1841418608,
+        type: 3}
+    - target: {fileID: 8320899697315609091, guid: 4a708317e2bbf8d43a6b2987d2f43c8d,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8320899697531324008, guid: 4a708317e2bbf8d43a6b2987d2f43c8d,
         type: 3}
@@ -545,13 +603,19 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7301581046175643563}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1598121969874685354 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8320899697315609089, guid: 4a708317e2bbf8d43a6b2987d2f43c8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7301581046175643563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1598121969874685352 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8320899697315609091, guid: 4a708317e2bbf8d43a6b2987d2f43c8d,
     type: 3}
   m_PrefabInstance: {fileID: 7301581046175643563}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1598121969874685354}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ArrowSort : MonoBehaviour
 {
@@ -21,6 +23,7 @@ public class ArrowSort : MonoBehaviour
     bool isGameStart;
     bool isShoot;
 
+    public Text arrowCountText;
 
     public static ArrowSort instance;
     private void Awake()
@@ -37,6 +40,7 @@ public class ArrowSort : MonoBehaviour
 
     void Update()
     {
+        arrowCountText.text = arrows.Count.ToString();
         MoveForward();
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -124,10 +128,11 @@ public class ArrowSort : MonoBehaviour
             arrows.Remove(currentArrow);
             currentArrow.transform.parent = null;
             currentArrow.GetComponent<ArrowMovement>().targetObstacle = this.targetObstacle;
-            Destroy(currentArrow, 2);
+            Destroy(currentArrow, 1);
             //Debug.Log("Nabre : " + currentArrow.name);
         }
     }
+
     public void AdArrow(int count)
     {
         for (int i = 0; i < count; i++)
@@ -155,6 +160,7 @@ public class ArrowSort : MonoBehaviour
         else
         {
             Debug.LogWarning("Game Over");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
     public void DivideArrow(float count)
@@ -176,6 +182,7 @@ public class ArrowSort : MonoBehaviour
         else
         {
             Debug.LogWarning("Game Over");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
     public void MultiplyArrow(int count)
@@ -188,5 +195,10 @@ public class ArrowSort : MonoBehaviour
             arrows.Add(currentArrow);
             Sort();
         }
+    }
+
+    public void SceneLoader(int value)
+    {
+        SceneManager.LoadScene(value);
     }
 }
